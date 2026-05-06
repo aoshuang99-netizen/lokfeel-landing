@@ -1,0 +1,24 @@
+{
+  "name": "LokFeel — Feel the Connection",
+  "short_name": "LokFeel",
+  "description": "5 curated relationship matches per week. Feel the connection before you meet.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e8a038",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["lifestyle", "social"],
+  "lang": "en"
+}
