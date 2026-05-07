@@ -128,49 +128,22 @@ function Navbar() {
    ═══════════════════════════════════════════════════════════════ */
 function Hero() {
   const [loaded, setLoaded] = useState(false)
-  const [videoLoaded, setVideoLoaded] = useState(false)
-  const [isSlowConnection, setIsSlowConnection] = useState(false)
 
   useEffect(() => {
-    // Detect slow connections (4G or worse)
-    const conn = (navigator as any).connection
-    if (conn) {
-      const effectiveType = conn.effectiveType
-      setIsSlowConnection(effectiveType === '2g' || effectiveType === '3g' || effectiveType === '4g')
-      // Don't auto-play video on slow connections
-    }
     const timer = setTimeout(() => setLoaded(true), 100)
     return () => clearTimeout(timer)
   }, [])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ minHeight: '100dvh' }}>
-      {/* Video Background — lazy loaded, no preload on slow connections */}
+      {/* Hero Background — local image, no heavy video */}
       <div className="hero-video-container">
-        <video
-          autoPlay={!isSlowConnection}
-          muted
-          loop
-          playsInline
-          preload={isSlowConnection ? 'none' : 'metadata'}
-          className={`animate-ken-burns transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
-          poster="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=60"
-          onLoadedData={() => setVideoLoaded(true)}
-          onCanPlay={() => setVideoLoaded(true)}
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
-        {/* Fallback: always show poster image behind video */}
-        {!videoLoaded && (
-          <div className="absolute inset-0">
-            <img
-              src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=60"
-              alt=""
-              className="w-full h-full object-cover"
-              style={{ filter: 'brightness(0.7) contrast(1.1) saturate(0.9)' }}
-            />
-          </div>
-        )}
+        <img
+          src="/images/bg/couple-sunset.jpg"
+          alt=""
+          className="w-full h-full object-cover animate-ken-burns"
+          style={{ filter: 'brightness(0.7) contrast(1.1) saturate(0.9)' }}
+        />
       </div>
 
       {/* Content — z-20 ensures always above video overlay */}
@@ -241,7 +214,7 @@ function AboutSection() {
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   // Fallback to placeholder if image not found
-                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=800&fit=crop&q=70'
+                  (e.target as HTMLImageElement).src = '/images/bg/photo-couple-main.jpg'
                 }}
               />
               {/* Subtle gradient overlay */}
@@ -290,19 +263,19 @@ function HowSection() {
       num: '01',
       title: 'Share your story',
       desc: 'A 5-minute conversation about what matters to you.',
-      image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=400&fit=crop&q=60',
+      image: '/images/bg/photo-couple-main.jpg',
     },
     {
       num: '02',
       title: 'Get curated matches',
       desc: '5 handpicked people weekly, with explanations why you connect.',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop&q=60',
+      image: '/images/bg/photo-team-1.jpg',
     },
     {
       num: '03',
       title: 'Meet with intention',
       desc: 'Skip the small talk. Start with genuine compatibility.',
-      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop&q=60',
+      image: '/images/bg/photo-team-2.jpg',
     },
   ]
 
@@ -543,11 +516,11 @@ function StoriesSection() {
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     const fallbacks = [
-                      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&h=600&fit=crop&q=90',
-                      'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=1200&h=600&fit=crop&q=90',
-                      'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=1200&h=600&fit=crop&q=90',
-                      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=1200&h=600&fit=crop&q=90',
-                      'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1200&h=600&fit=crop&q=90',
+                      '/images/bg/story-4.jpg',
+                      '/images/bg/story-1.jpg',
+                      '/images/bg/story-3.jpg',
+                      '/images/bg/story-5.jpg',
+                      '/images/bg/story-2.jpg',
                     ]
                     ;(e.target as HTMLImageElement).src = fallbacks[i] || fallbacks[0]
                   }}
@@ -644,11 +617,11 @@ function StoriesSection() {
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     const fallbacks = [
-                      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&q=80',
-                      'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&q=80',
-                      'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&q=80',
-                      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&q=80',
-                      'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&q=80',
+                      '/images/bg/story-4.jpg',
+                      '/images/bg/story-1.jpg',
+                      '/images/bg/story-3.jpg',
+                      '/images/bg/story-5.jpg',
+                      '/images/bg/story-2.jpg',
                     ]
                     ;(e.target as HTMLImageElement).src = fallbacks[i] || fallbacks[0]
                   }}

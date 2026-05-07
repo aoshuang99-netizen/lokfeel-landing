@@ -34,8 +34,8 @@ export function VideoBackground({ variant = 'hero' }: VideoBackgroundProps) {
       <div className="absolute inset-0">
         {/* Layer 1: Primary cinematic image with slow zoom */}
         <div className="absolute inset-0 animate-ken-burns-slow">
-          <img 
-            src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&h=800&fit=crop&q=70"
+          <img
+            src="/images/bg/couple-sunset.jpg"
             alt=""
             loading="eager"
             fetchPriority="high"
@@ -45,8 +45,8 @@ export function VideoBackground({ variant = 'hero' }: VideoBackgroundProps) {
         
         {/* Layer 2: Secondary image with reverse animation */}
         <div className="absolute inset-0 animate-ken-burns-reverse opacity-40 mix-blend-overlay">
-          <img 
-            src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=1200&h=800&fit=crop&q=60"
+          <img
+            src="/images/bg/romantic-scene.jpg"
             alt=""
             loading="lazy"
             className="w-full h-full object-cover"
@@ -56,16 +56,16 @@ export function VideoBackground({ variant = 'hero' }: VideoBackgroundProps) {
         {/* Layer 3: Floating portrait elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-32 h-44 rounded-full overflow-hidden opacity-20 blur-xl animate-float-slow">
-            <img 
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=200&fit=crop&crop=faces&q=50"
+            <img
+              src="/images/bg/portrait-woman.jpg"
               alt=""
               loading="lazy"
               className="w-full h-full object-cover"
             />
           </div>
           <div className="absolute bottom-1/3 right-1/4 w-28 h-40 rounded-full overflow-hidden opacity-15 blur-xl animate-float-slow" style={{ animationDelay: '3s' }}>
-            <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=200&fit=crop&crop=faces&q=50"
+            <img
+              src="/images/bg/portrait-man.jpg"
               alt=""
               loading="lazy"
               className="w-full h-full object-cover"
