@@ -85,10 +85,10 @@ export function AppDownload({ variant = 'hero' }: AppDownloadProps) {
 
           {/* Headline */}
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
-            Take <span className="text-gradient">LokFeel</span> with you
+            Take <span className="text-gradient">LokFee!</span> with you
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Your curated matches, delivered to your pocket. Access LokFeel instantly from any device.
+            Your curated matches, delivered to your pocket. Access LokFee! instantly from any device.
           </p>
         </div>
 

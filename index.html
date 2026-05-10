@@ -3,18 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <!-- Dateasy Dark Theme -->
+    <meta name="theme-color" content="#0a0a0a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="LokFeel" />
+    <meta name="apple-mobile-web-app-title" content="LokFee!" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <!-- Critical: Preload only the hero poster (tiny), NOT the video -->
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=60" />
-    <title>LokFeel — Feel the Connection Before You Meet</title>
-    <meta name="description" content="LokFeel delivers 5 curated relationship matches per week with explanations of why you connect. Built for women who want quality over quantity. No swiping." />
-    <meta property="og:title" content="LokFeel — Feel the Connection Before You Meet" />
+    <link rel="preload" as="image" href="/images/bg/couple-sunset.jpg" />
+    <title>LokFee! — Feel the Connection Before You Meet</title>
+    <meta name="description" content="LokFee! delivers 5 curated relationship matches per week with explanations of why you connect. Built for women who want quality over quantity. No swiping." />
+    <meta property="og:title" content="LokFee! — Feel the Connection Before You Meet" />
     <meta property="og:description" content="A relationship matching engine that delivers 5 curated matches per week. No swiping. No games. Ladies never pay." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://lokfeel.com" />
@@ -22,11 +20,11 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
-    <!-- Font: Only load Inter weights we actually use (300-700), defer Playfair Display -->
+    <!-- Fonts: Outfit (UI) + Sora (Display) — matching app.lokfeel.com -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <!-- Register Service Worker for offline support -->
     <script>
       if ('serviceWorker' in navigator) {
