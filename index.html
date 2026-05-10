@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="LokFee!" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <link rel="preload" as="image" href="/images/bg/couple-sunset.jpg" />
+    <link rel="preload" as="image" href="/images/bg/couple-sunset.webp" type="image/webp" />
     <title>LokFee! — Feel the Connection Before You Meet</title>
     <meta name="description" content="LokFee! delivers 5 curated relationship matches per week with explanations of why you connect. Built for women who want quality over quantity. No swiping." />
     <meta property="og:title" content="LokFee! — Feel the Connection Before You Meet" />
@@ -20,11 +20,14 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
-    <!-- Fonts: Outfit (UI) + Sora (Display) — matching app.lokfeel.com -->
+    <!-- Fonts: Outfit (UI) + Sora (Display) — async non-blocking load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Preload critical font files -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@600;700;800&display=swap" />
+    </noscript>
     <!-- Register Service Worker for offline support -->
     <script>
       if ('serviceWorker' in navigator) {

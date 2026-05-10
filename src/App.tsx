@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Heart, Menu, X, ArrowRight, Apple, Play, LogIn } from 'lucide-react'
+import { OptimizedImg } from './components/OptimizedImage'
 
 /* ═══════════════════════════════════════════════════════════════
    LOKFEEL LANDING — DATEASY DARK + FEELD STYLE
@@ -47,7 +48,7 @@ function Navbar() {
       scrolled
         ? 'bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5'
         : 'bg-transparent'
-    }`}>
+    }`} aria-label="Main navigation">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -80,7 +81,11 @@ function Navbar() {
               </button>
             </a>
             <button onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden w-9 h-9 flex items-center justify-center text-white/70">
+              className="md:hidden w-9 h-9 flex items-center justify-center text-white/70"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+            >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
@@ -89,7 +94,7 @@ function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/5 p-6">
+        <div id="mobile-menu" className="md:hidden absolute top-16 left-0 right-0 bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/5 p-6" role="dialog" aria-label="Mobile navigation menu">
           <div className="flex flex-col gap-4">
             {links.map(l => (
               <a key={l.href} href={l.href} onClick={() => setMobileOpen(false)}
@@ -128,11 +133,12 @@ function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ minHeight: '100dvh' }}>
-      {/* Hero Background */}
-      <div className="hero-video-container">
-        <img
+      {/* Hero Background — WebP optimized, eager load for LCP */}
+      <div className="hero-video-container" aria-hidden="true">
+        <OptimizedImg
           src="/images/bg/couple-sunset.jpg"
-          alt=""
+          alt="Couple enjoying a romantic sunset together"
+          loading="eager"
           className="w-full h-full object-cover animate-ken-burns"
           style={{ filter: 'brightness(0.55) contrast(1.1) saturate(0.8)' }}
         />
@@ -156,7 +162,7 @@ function Hero() {
         {/* CTA Buttons — Lime primary */}
         <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-700 delay-200 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <a href="https://app.lokfeel.com/register" className="block w-full sm:w-auto">
-            <button className="btn-lime animate-glow-pulse rounded-full px-8 py-6 text-base font-semibold w-full sm:w-auto flex items-center justify-center gap-2 cursor-pointer border-none">
+            <button className="btn-lime animate-glow-pulse rounded-full px-8 py-6 text-base font-semibold w-full sm:w-auto flex items-center justify-center gap-2 cursor-pointer border-none" aria-label="Start free registration on LokFee!">
               <Heart className="w-5 h-5" />
               Start Free
             </button>
@@ -202,14 +208,11 @@ function AboutSection() {
           {/* Left: Image */}
           <div className={`relative transition-all duration-1000 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden ring-1 ring-white/5">
-              <img
+              <OptimizedImg
                 src="/images/about-couple.jpg"
-                alt="Real connection"
+                alt="Real couple connecting through LokFee!"
                 loading="lazy"
                 className="w-full h-full object-cover"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/images/bg/photo-couple-main.jpg'
-                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/30 via-transparent to-transparent" />
             </div>
@@ -230,7 +233,7 @@ function AboutSection() {
             </p>
             <div className={`mt-8 transition-all duration-700 delay-200 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <a href="#how">
-                <button className="rounded-full px-6 py-2.5 text-sm font-medium border border-[#4c1d95]/30 text-[#a78bfa] hover:bg-[#4c1d95]/10 hover:border-[#4c1d95]/50 transition-all cursor-pointer bg-transparent inline-flex items-center gap-2">
+                <button className="rounded-full px-6 py-2.5 text-sm font-medium border border-[#4c1d95]/30 text-[#a78bfa] hover:bg-[#4c1d95]/10 hover:border-[#4c1d95]/50 transition-all cursor-pointer bg-transparent inline-flex items-center gap-2" aria-label="Learn how LokFee! works">
                   See how it works
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -368,9 +371,9 @@ function HowSection() {
                   activeStep === i ? 'opacity-100 scale-100' : 'opacity-0 scale-110'
                 }`}
               >
-                <img
+                <OptimizedImg
                   src={step.image}
-                  alt={step.title}
+                  alt={`Step ${step.num}: ${step.title}`}
                   loading="lazy"
                   className="w-full h-full object-cover"
                 />
@@ -380,12 +383,13 @@ function HowSection() {
 
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
               {steps.map((_, i) => (
-                <button
+              <button
                   key={i}
                   onClick={() => setActiveStep(i)}
                   className={`h-1.5 rounded-full transition-all duration-500 ${
                     activeStep === i ? 'bg-[#a3e635] w-8' : 'bg-white/20 w-1.5 hover:bg-white/40'
                   }`}
+                  aria-label={`Go to step ${steps[i].num}: ${steps[i].title}`}
                 />
               ))}
             </div>
@@ -482,6 +486,9 @@ function StoriesSection() {
           className="relative"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="User success stories"
         >
           <div className={`relative aspect-[16/10] md:aspect-[21/9] rounded-2xl overflow-hidden transition-all duration-700 ${inView ? 'opacity-100 scale-100' : 'opacity-95 scale-98'}`}>
             {stories.map((story, i) => (
@@ -489,17 +496,10 @@ function StoriesSection() {
                 key={i}
                 className={`absolute inset-0 transition-all duration-700 ease-out ${activeStory === i ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
               >
-                <img
+                <OptimizedImg
                   src={story.image}
-                  alt={story.name}
+                  alt={`Story of ${story.name}`}
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const fallbacks = [
-                      '/images/bg/story-4.jpg', '/images/bg/story-1.jpg', '/images/bg/story-3.jpg',
-                      '/images/bg/story-5.jpg', '/images/bg/story-2.jpg',
-                    ]
-                    ;(e.target as HTMLImageElement).src = fallbacks[i] || fallbacks[0]
-                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/90 via-[#0a0a0a]/40 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/50 via-transparent to-transparent" />
@@ -511,11 +511,10 @@ function StoriesSection() {
               <div className="flex items-end justify-between gap-4">
                 <div className="flex items-center gap-3 sm:gap-4">
                   <div className="relative">
-                    <img
+                    <OptimizedImg
                       src={stories[activeStory].avatar}
-                      alt={stories[activeStory].name}
+                      alt={`Avatar of ${stories[activeStory].name}`}
                       className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full object-cover ring-2 ring-[#a3e635]/30"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                     />
                     <div className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-[#a3e635] rounded-full ring-2 ring-[#0a0a0a]" />
                   </div>
@@ -577,18 +576,12 @@ function StoriesSection() {
                     ? 'w-16 sm:w-20 md:w-24 h-12 sm:h-14 md:h-16 ring-2 ring-[#a3e635]'
                     : 'w-10 sm:w-12 md:w-14 h-12 sm:h-14 md:h-16 opacity-50 hover:opacity-70'
                 }`}
+                aria-label={`View story of ${story.name}`}
               >
-                <img
+                <OptimizedImg
                   src={story.avatar}
-                  alt={story.name}
+                  alt={`Avatar of ${story.name}`}
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const fallbacks = [
-                      '/images/bg/story-4.jpg', '/images/bg/story-1.jpg', '/images/bg/story-3.jpg',
-                      '/images/bg/story-5.jpg', '/images/bg/story-2.jpg',
-                    ]
-                    ;(e.target as HTMLImageElement).src = fallbacks[i] || fallbacks[0]
-                  }}
                 />
                 {activeStory === i && (
                   <div className="absolute inset-0 bg-[#a3e635]/10" />
@@ -632,7 +625,7 @@ function CTASection() {
 
         {/* App Download Buttons */}
         <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 transition-all duration-700 delay-200 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <a href="https://apps.apple.com/app/lokfeel" target="_blank" rel="noopener noreferrer">
+          <a href="https://apps.apple.com/app/lokfeel" target="_blank" rel="noopener noreferrer" aria-label="Download LokFee! from the App Store (opens in new tab)">
             <button className="rounded-xl px-6 h-14 gap-3 border border-white/15 text-white hover:bg-white/5 transition-all flex items-center cursor-pointer bg-transparent">
               <Apple className="w-6 h-6" />
               <div className="text-left">
@@ -641,7 +634,7 @@ function CTASection() {
               </div>
             </button>
           </a>
-          <a href="https://play.google.com/store/apps/details?id=com.lokfeel.app" target="_blank" rel="noopener noreferrer">
+          <a href="https://play.google.com/store/apps/details?id=com.lokfeel.app" target="_blank" rel="noopener noreferrer" aria-label="Download LokFee! from Google Play (opens in new tab)">
             <button className="rounded-xl px-6 h-14 gap-3 border border-white/15 text-white hover:bg-white/5 transition-all flex items-center cursor-pointer bg-transparent">
               <Play className="w-6 h-6" />
               <div className="text-left">
@@ -698,8 +691,15 @@ function Footer() {
 function App() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
+      {/* Skip Navigation — Accessibility */}
+      <a
+        href="#main-content"
+        className="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#a3e635] focus:text-black focus:rounded-lg focus:text-sm focus:font-semibold"
+      >
+        Skip to main content
+      </a>
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <AboutSection />
         <HowSection />
