@@ -1,6 +1,6 @@
 {
   "buildCommand": "echo 'static site - no build needed'",
-  "outputDirectory": "dist",
+  "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
