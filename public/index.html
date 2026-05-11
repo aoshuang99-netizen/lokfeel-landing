@@ -359,6 +359,244 @@
       font-weight: 600;
     }
 
+    /* ═══════════════════════════════════════════════════
+       STORIES CAROUSEL - 真人案例轮播
+       ═══════════════════════════════════════════════════ */
+    .stories-section {
+      padding: 80px 48px 60px;
+      position: relative;
+      z-index: 2;
+    }
+    .stories-section .section-label {
+      text-align: center;
+      font-size: 12px;
+      color: #60a5fa;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .stories-section .section-title {
+      text-align: center;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+    .carousel-wrapper {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .carousel-main {
+      position: relative;
+      aspect-ratio: 21 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #111;
+    }
+    @media (max-width: 768px) {
+      .carousel-main { aspect-ratio: 16 / 10; border-radius: 12px; }
+    }
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .carousel-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .carousel-slide .slide-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+    }
+    .carousel-slide .slide-gradient-side {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.5), transparent);
+    }
+    .slide-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    @media (max-width: 768px) {
+      .slide-content { padding: 16px; flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+    .slide-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .slide-avatar {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.5);
+      flex-shrink: 0;
+    }
+    @media (min-width: 769px) { .slide-avatar { width: 56px; height: 56px; } }
+    .slide-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slide-avatar .online-dot {
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 14px;
+      height: 14px;
+      background: #22c55e;
+      border-radius: 50%;
+      border: 2px solid #000;
+    }
+    .slide-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: #fff;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-bottom: 4px;
+    }
+    .slide-name {
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    @media (min-width: 769px) { .slide-name { font-size: 20px; } }
+    .slide-role {
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+    }
+    @media (min-width: 769px) { .slide-role { font-size: 14px; } }
+    .slide-quote-desktop {
+      display: none;
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+      font-style: italic;
+      max-width: 420px;
+    }
+    @media (min-width: 769px) { .slide-quote-desktop { display: block; } }
+    .slide-quote-mobile {
+      color: rgba(255,255,255,0.8);
+      font-size: 12px;
+      font-style: italic;
+      margin-top: 4px;
+    }
+    @media (min-width: 769px) { .slide-quote-mobile { display: none; } }
+    .carousel-counter {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      z-index: 3;
+    }
+    .carousel-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 3;
+      transition: background 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .carousel-nav-btn:hover { background: rgba(0,0,0,0.6); }
+    .carousel-nav-btn.prev { left: 8px; }
+    .carousel-nav-btn.next { right: 8px; }
+    @media (min-width: 769px) {
+      .carousel-nav-btn { width: 40px; height: 40px; }
+      .carousel-nav-btn.prev { left: 16px; }
+      .carousel-nav-btn.next { right: 16px; }
+    }
+    /* Thumbnails */
+    .carousel-thumbs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    @media (min-width: 769px) { .carousel-thumbs { gap: 12px; } }
+    .carousel-thumb {
+      overflow: hidden;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s;
+      width: 40px;
+      height: 40px;
+      opacity: 0.6;
+    }
+    .carousel-thumb:hover { opacity: 0.8; }
+    .carousel-thumb.active {
+      width: 56px;
+      border-color: #fff;
+      opacity: 1;
+    }
+    @media (min-width: 769px) {
+      .carousel-thumb { width: 48px; height: 48px; }
+      .carousel-thumb.active { width: 72px; }
+    }
+    .carousel-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Progress dots */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .carousel-dot {
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.3);
+      transition: all 0.3s;
+      width: 4px;
+    }
+    .carousel-dot.active {
+      width: 24px;
+      background: #60a5fa;
+    }
+
     /* Final CTA - 修复按钮 */
     .final-cta {
       padding: 80px 48px;
@@ -490,6 +728,15 @@
       .stat-value { font-size: clamp(24px, 6vw, 36px); }
       .stat-label { font-size: 11px; }
       .story-grid { grid-template-columns: 1fr; }
+      .stories-section { padding: 60px 20px 40px; }
+      .slide-name { font-size: 16px !important; }
+      .slide-role { font-size: 12px !important; }
+      .slide-avatar { width: 40px !important; height: 40px !important; }
+      .carousel-nav-btn { width: 32px; height: 32px; }
+      .carousel-nav-btn.prev { left: 4px; }
+      .carousel-nav-btn.next { right: 4px; }
+      .carousel-thumb { width: 36px; height: 36px; }
+      .carousel-thumb.active { width: 48px; }
       .final-cta { padding: 60px 20px; }
       .final-cta .btn {
         padding: 16px 32px;
@@ -619,6 +866,173 @@
     </div>
   </section>
 
+  <!-- Stories Carousel - 5 Real Success Stories with Photos -->
+  <section class="stories-section">
+    <p class="section-label">Success Stories</p>
+    <h2 class="section-title">Real connections, real professionals</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel-main" id="carouselMain">
+        <div class="carousel-counter" id="carouselCounter">01 / 05</div>
+
+        <!-- Slide 1: Sarah -->
+        <div class="carousel-slide active" data-index="0">
+          <img src="images/case-1-sarah.jpg" alt="Sarah, 32 - Architect"
+               onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&h=600&fit=crop&q=90'">
+          <div class="slide-gradient"></div>
+          <div class="slide-gradient-side"></div>
+          <div class="slide-content">
+            <div class="slide-info">
+              <div class="slide-avatar">
+                <img src="images/avatar-sarah.jpg" alt="Sarah"
+                     onerror="this.style.display='none'">
+                <div class="online-dot"></div>
+              </div>
+              <div>
+                <span class="slide-badge">Women-first control</span>
+                <p class="slide-name">Sarah, 32</p>
+                <p class="slide-role">Architect &bull; Together for 8 months</p>
+              </div>
+            </div>
+            <p class="slide-quote-desktop">"I control who reaches me. The matching engine explained why David and I connect."</p>
+          </div>
+          <p class="slide-quote-mobile" style="position:absolute;bottom:16px;left:16px;right:16px;">"I control who reaches me. The matching engine explained why David and I connect."</p>
+        </div>
+
+        <!-- Slide 2: Marcus -->
+        <div class="carousel-slide" data-index="1">
+          <img src="images/case-2-marcus.jpg" alt="Marcus, 29 - Finance Analyst"
+               onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=1200&h=600&fit=crop&q=90'">
+          <div class="slide-gradient"></div>
+          <div class="slide-gradient-side"></div>
+          <div class="slide-content">
+            <div class="slide-info">
+              <div class="slide-avatar">
+                <img src="images/avatar-marcus.jpg" alt="Marcus"
+                     onerror="this.style.display='none'">
+                <div class="online-dot"></div>
+              </div>
+              <div>
+                <span class="slide-badge">Structure matching</span>
+                <p class="slide-name">Marcus, 29</p>
+                <p class="slide-role">Finance Analyst &bull; Engaged after 6 months</p>
+              </div>
+            </div>
+            <p class="slide-quote-desktop">"The relationship structure matching is brilliant. No guessing games."</p>
+          </div>
+          <p class="slide-quote-mobile" style="position:absolute;bottom:16px;left:16px;right:16px;">"The relationship structure matching is brilliant. No guessing games."</p>
+        </div>
+
+        <!-- Slide 3: Elena -->
+        <div class="carousel-slide" data-index="2">
+          <img src="images/case-3-elena.jpg" alt="Elena, 35 - Creative Director"
+               onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?w=1200&h=600&fit=crop&q=90'">
+          <div class="slide-gradient"></div>
+          <div class="slide-gradient-side"></div>
+          <div class="slide-content">
+            <div class="slide-info">
+              <div class="slide-avatar">
+                <img src="images/avatar-elena.jpg" alt="Elena"
+                     onerror="this.style.display='none'">
+                <div class="online-dot"></div>
+              </div>
+              <div>
+                <span class="slide-badge">Verified professionals</span>
+                <p class="slide-name">Elena, 35</p>
+                <p class="slide-role">Creative Director &bull; Together for 1 year</p>
+              </div>
+            </div>
+            <p class="slide-quote-desktop">"I only see verified professionals who match my goals. Quality over quantity."</p>
+          </div>
+          <p class="slide-quote-mobile" style="position:absolute;bottom:16px;left:16px;right:16px;">"I only see verified professionals who match my goals. Quality over quantity."</p>
+        </div>
+
+        <!-- Slide 4: James -->
+        <div class="carousel-slide" data-index="3">
+          <img src="images/case-4-james.jpg" alt="James, 31 - Tech Entrepreneur"
+               onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=1200&h=600&fit=crop&q=90'">
+          <div class="slide-gradient"></div>
+          <div class="slide-gradient-side"></div>
+          <div class="slide-content">
+            <div class="slide-info">
+              <div class="slide-avatar">
+                <img src="images/avatar-james.jpg" alt="James"
+                     onerror="this.style.display='none'">
+                <div class="online-dot"></div>
+              </div>
+              <div>
+                <span class="slide-badge">AI matching engine</span>
+                <p class="slide-name">James, 31</p>
+                <p class="slide-role">Tech Entrepreneur &bull; Married after 10 months</p>
+              </div>
+            </div>
+            <p class="slide-quote-desktop">"The algorithm matched me with someone complementary. It actually works."</p>
+          </div>
+          <p class="slide-quote-mobile" style="position:absolute;bottom:16px;left:16px;right:16px;">"The algorithm matched me with someone complementary. It actually works."</p>
+        </div>
+
+        <!-- Slide 5: Priya -->
+        <div class="carousel-slide" data-index="4">
+          <img src="images/case-5-priya.jpg" alt="Priya, 28 - Physician"
+               onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1200&h=600&fit=crop&q=90'">
+          <div class="slide-gradient"></div>
+          <div class="slide-gradient-side"></div>
+          <div class="slide-content">
+            <div class="slide-info">
+              <div class="slide-avatar">
+                <img src="images/avatar-priya.jpg" alt="Priya"
+                     onerror="this.style.display='none'">
+                <div class="online-dot"></div>
+              </div>
+              <div>
+                <span class="slide-badge">Purposeful matching</span>
+                <p class="slide-name">Priya, 28</p>
+                <p class="slide-role">Physician &bull; Together for 6 months</p>
+              </div>
+            </div>
+            <p class="slide-quote-desktop">"LokFeel lets me set the pace. Every match came with a clear reason."</p>
+          </div>
+          <p class="slide-quote-mobile" style="position:absolute;bottom:16px;left:16px;right:16px;">"LokFeel lets me set the pace. Every match came with a clear reason."</p>
+        </div>
+
+        <!-- Nav buttons -->
+        <button class="carousel-nav-btn prev" id="carouselPrev" aria-label="Previous story">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button class="carousel-nav-btn next" id="carouselNext" aria-label="Next story">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- Thumbnails -->
+      <div class="carousel-thumbs" id="carouselThumbs">
+        <button class="carousel-thumb active" data-idx="0">
+          <img src="images/avatar-sarah.jpg" alt="Sarah" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&q=80'">
+        </button>
+        <button class="carousel-thumb" data-idx="1">
+          <img src="images/avatar-marcus.jpg" alt="Marcus" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&q=80'">
+        </button>
+        <button class="carousel-thumb" data-idx="2">
+          <img src="images/avatar-elena.jpg" alt="Elena" onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&q=80'">
+        </button>
+        <button class="carousel-thumb" data-idx="3">
+          <img src="images/avatar-james.jpg" alt="James" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&q=80'">
+        </button>
+        <button class="carousel-thumb" data-idx="4">
+          <img src="images/avatar-priya.jpg" alt="Priya" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&q=80'">
+        </button>
+      </div>
+
+      <!-- Progress dots -->
+      <div class="carousel-dots" id="carouselDots">
+        <div class="carousel-dot active" data-idx="0"></div>
+        <div class="carousel-dot" data-idx="1"></div>
+        <div class="carousel-dot" data-idx="2"></div>
+        <div class="carousel-dot" data-idx="3"></div>
+        <div class="carousel-dot" data-idx="4"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- Final CTA -->
   <section class="final-cta">
     <h2>Your story starts here</h2>
@@ -628,15 +1042,118 @@
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand">LokFeel!</div>
+      <div class="footer-brand">LokFeel</div>
       <div class="footer-links">
         <a href="https://app.lokfeel.com/privacy">Privacy</a>
         <a href="https://app.lokfeel.com/terms">Terms</a>
         <a href="mailto:hello@lokfeel.com">Contact</a>
       </div>
-      <p class="footer-copy">© 2026 LokFeel! Real Matches. Real Connection. No Swiping.</p>
+      <p class="footer-copy">&copy; 2026 LokFeel. Real Matches. Real Connection. No Swiping.</p>
     </div>
   </footer>
+
+  <!-- ═══════════════════════════════════════════════════
+       JavaScript: Stories Carousel
+       - 5真人案例照片轮播
+       - 自动播放 + 手动控制
+       - 触摸/滑动支持
+       ═══════════════════════════════════════════════════ -->
+  <script>
+  (function() {
+    'use strict';
+    var slides = document.querySelectorAll('.carousel-slide');
+    var thumbs = document.querySelectorAll('.carousel-thumb');
+    var dots = document.querySelectorAll('.carousel-dot');
+    var counter = document.getElementById('carouselCounter');
+    var total = slides.length;
+    var current = 0;
+    var autoTimer = null;
+    var isPaused = false;
+    var INTERVAL = 4000;
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function goTo(idx) {
+      if (idx < 0) idx = total - 1;
+      if (idx >= total) idx = 0;
+      slides[current].classList.remove('active');
+      thumbs[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = idx;
+      slides[current].classList.add('active');
+      thumbs[current].classList.add('active');
+      dots[current].classList.add('active');
+      counter.textContent = pad(current + 1) + ' / ' + pad(total);
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(function() {
+        if (!isPaused) next();
+      }, INTERVAL);
+    }
+    function stopAuto() {
+      if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    }
+
+    // Button controls
+    document.getElementById('carouselPrev').addEventListener('click', function() { prev(); startAuto(); });
+    document.getElementById('carouselNext').addEventListener('click', function() { next(); startAuto(); });
+
+    // Thumbnail controls
+    thumbs.forEach(function(thumb) {
+      thumb.addEventListener('click', function() {
+        goTo(parseInt(this.getAttribute('data-idx')));
+        startAuto();
+      });
+    });
+
+    // Dot controls
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        goTo(parseInt(this.getAttribute('data-idx')));
+        startAuto();
+      });
+    });
+
+    // Pause on hover
+    var wrapper = document.querySelector('.carousel-wrapper');
+    if (wrapper) {
+      wrapper.addEventListener('mouseenter', function() { isPaused = true; });
+      wrapper.addEventListener('mouseleave', function() { isPaused = false; });
+    }
+
+    // Touch/Swipe support
+    var touchStartX = 0;
+    var touchEndX = 0;
+    var mainEl = document.getElementById('carouselMain');
+    if (mainEl) {
+      mainEl.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      mainEl.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        var diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) next(); else prev();
+          startAuto();
+        }
+      }, { passive: true });
+    }
+
+    // Keyboard support
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') { prev(); startAuto(); }
+      if (e.key === 'ArrowRight') { next(); startAuto(); }
+    });
+
+    // Start auto-play
+    startAuto();
+  })();
+  </script>
 
   <!-- ═══════════════════════════════════════════════════
        JavaScript: 视频背景兼容性处理
