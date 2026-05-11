@@ -125,23 +125,47 @@ function Navbar() {
    ═══════════════════════════════════════════════════════════════ */
 function Hero() {
   const [loaded, setLoaded] = useState(false)
+  const [videoLoaded, setVideoLoaded] = useState(false)
+  const [isSlowConnection, setIsSlowConnection] = useState(false)
 
   useEffect(() => {
+    // Detect slow connections (2g/3g/4g) — skip video preload
+    const conn = (navigator as any).connection
+    if (conn) {
+      const effectiveType = conn.effectiveType
+      setIsSlowConnection(effectiveType === '2g' || effectiveType === '3g' || effectiveType === '4g')
+    }
     const timer = setTimeout(() => setLoaded(true), 100)
     return () => clearTimeout(timer)
   }, [])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ minHeight: '100dvh' }}>
-      {/* Hero Background — WebP optimized, eager load for LCP */}
+      {/* Video Background — lazy loaded, with image fallback */}
       <div className="hero-video-container" aria-hidden="true">
-        <OptimizedImg
-          src="/images/bg/couple-sunset.jpg"
-          alt="Couple enjoying a romantic sunset together"
-          loading="eager"
-          className="w-full h-full object-cover animate-ken-burns"
-          style={{ filter: 'brightness(0.55) contrast(1.1) saturate(0.8)' }}
-        />
+        <video
+          autoPlay={!isSlowConnection}
+          muted
+          loop
+          playsInline
+          preload={isSlowConnection ? 'none' : 'metadata'}
+          className={`animate-ken-burns transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          poster="/images/bg/couple-sunset.jpg"
+          onLoadedData={() => setVideoLoaded(true)}
+          onCanPlay={() => setVideoLoaded(true)}
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+        {/* Fallback: always show image behind video */}
+        {!videoLoaded && (
+          <OptimizedImg
+            src="/images/bg/couple-sunset.jpg"
+            alt="Couple enjoying a romantic sunset together"
+            loading="eager"
+            className="w-full h-full object-cover animate-ken-burns"
+            style={{ filter: 'brightness(0.55) contrast(1.1) saturate(0.8)' }}
+          />
+        )}
       </div>
 
       {/* Purple ambient glow — bottom left */}

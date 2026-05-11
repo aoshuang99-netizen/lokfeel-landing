@@ -1,7 +1,7 @@
 // LokFeel Landing Page Service Worker
 // Offline-first strategy: Cache static assets, Network-first for API calls
 
-const CACHE_NAME = 'lokfeel-landing-v1';
+const CACHE_NAME = 'lokfeel-landing-v2';
 const OFFLINE_URL = '/offline.html';
 
 const PRECACHE_URLS = [

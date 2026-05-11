@@ -4,8 +4,8 @@
   "description": "5 curated relationship matches per week. Feel the connection before you meet.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#e8a038",
+  "background_color": "#0a0a0a",
+  "theme_color": "#4c1d95",
   "orientation": "portrait-primary",
   "icons": [
     {

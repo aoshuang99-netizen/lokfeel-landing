@@ -6,7 +6,7 @@
 import { useState } from 'react'
 import { Apple, Play, Heart, Sparkles, Star, Bell, Smartphone, Globe, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { LokFeelAppIcon } from './LokFeelLogo'
+import { LokFeeAppIcon } from './LokFeeLogo'
 
 interface AppDownloadProps {
   variant?: 'hero' | 'footer' | 'inline'
@@ -77,7 +77,7 @@ export function AppDownload({ variant = 'hero' }: AppDownloadProps) {
           {/* App Icon */}
           <div className="flex justify-center mb-6">
             <div className="relative">
-              <LokFeelAppIcon size={80} />
+              <LokFeeAppIcon size={80} />
               {/* Glow effect */}
               <div className="absolute inset-0 bg-rose-500/30 blur-2xl rounded-2xl -z-10 animate-pulse-slow" />
             </div>

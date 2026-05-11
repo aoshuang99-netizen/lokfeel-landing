@@ -302,6 +302,51 @@ body {
 /* ═══════════════════════════════════════════
    FOCUS & ACCESSIBILITY
    ═══════════════════════════════════════════ */
+
+/* Minimum touch target size for mobile (44x44px per WCAG 2.5.5) */
+@media (pointer: coarse) {
+  button,
+  a[role="button"],
+  a[href],
+  input[type="checkbox"],
+  input[type="radio"],
+  [tabindex]:not([tabindex="-1"]) {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Ensure nav links have adequate spacing on mobile */
+  nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Carousel navigation buttons should be 44x44 minimum */
+  .carousel-nav-btn,
+  button[aria-label*="Previous"],
+  button[aria-label*="Next"],
+  button[aria-label*="Go to"] {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Progress indicator dots should be clickable */
+  button[aria-label*="step"] {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Thumbnail images in carousel */
+  button[aria-label*="story"] {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
 button:focus-visible,
 a:focus-visible {
   outline: 2px solid #a3e635;
@@ -329,5 +374,84 @@ a:focus-visible {
 
   .carousel-slide {
     transition-duration: 0.5s;
+  }
+}
+
+
+/* ============================================
+   HUAWEI BROWSER COMPATIBILITY FIXES
+   ============================================ */
+
+/* Force hardware acceleration for smooth animations */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Fix viewport height on Huawei browser (address bar issue) */
+html, body, #root {
+  height: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  overflow-x: hidden;
+}
+
+/* Fix backdrop-filter fallback for older Huawei Chromium */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-panel,
+  .glass-card,
+  [class*="backdrop-blur"] {
+    background-color: rgba(10, 10, 10, 0.92) !important;
+  }
+}
+
+/* Fix flexbox gap fallback */
+@supports not (gap: 1px) {
+  .flex {
+    margin: -0.25rem;
+  }
+  .flex > * {
+    margin: 0.25rem;
+  }
+}
+
+/* Fix sticky positioning in Huawei browser */
+@supports not (position: sticky) {
+  [class*="sticky"] {
+    position: relative;
+  }
+}
+
+/* Fix CSS Grid auto-fit/auto-fill for Huawei */
+@supports not (grid-template-columns: repeat(auto-fit, minmax(1px, 1fr))) {
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+/* Fix snap scrolling for Huawei touch devices */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Force font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fix safe area insets for Huawei notched devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
