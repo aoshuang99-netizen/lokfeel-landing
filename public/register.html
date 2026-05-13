@@ -385,19 +385,49 @@
 
     /* Footer */
     footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 20px 48px;
-      background: rgba(8,8,20,0.8);
+      padding: 40px 48px;
+      background: rgba(8,8,20,0.95);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       text-align: center;
       font-size: 13px;
       color: rgba(255,255,255,0.4);
+      position: relative;
       z-index: 10;
     }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-brand { font-weight: 700; color: #fff; font-size: 18px; }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-links a { color: inherit; text-decoration: none; white-space: nowrap; }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .footer-social a {
+      color: rgba(255,255,255,0.4);
+      transition: color 0.2s;
+    }
+    .footer-social a:hover { color: rgba(255,255,255,0.8); }
 
     /* ═══════════════════════════════════════════════════
        移动端适配
@@ -426,7 +456,9 @@
         padding: 11px 6px;
         font-size: 13px;
       }
-      footer { padding: 16px 20px; font-size: 12px; }
+      .register-container { padding-bottom: 40px; }
+      footer { padding: 24px 20px; font-size: 12px; }
+      .footer-links { gap: 16px; }
     }
 
     @media (max-width: 375px) {
@@ -499,7 +531,7 @@
 
       <!-- Social Login -->
       <div class="social-login">
-        <button type="button" class="btn-social" onclick="alert('Google OAuth')">
+        <a href="https://app.lokfeel.com/api/auth/oauth/google/signin?callbackUrl=/dashboard" class="btn-social" style="text-decoration:none">
           <svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -507,12 +539,13 @@
             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
           </svg>
           Google
-        </button>
-        <button type="button" class="btn-social" onclick="alert('X OAuth 2.0')">
+        </a>
+        <a href="https://app.lokfeel.com/api/auth/twitter/signin?callbackUrl=/dashboard" class="btn-social" style="text-decoration:none">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
-        </button>
+          X
+        </a>
       </div>
 
       <div class="divider">
@@ -560,7 +593,32 @@
   </div>
 
   <footer>
-    <p>© 2026 LokFeel. Real Matches. Real Connection. No Swiping.</p>
+    <div class="footer-inner">
+      <div class="footer-brand">LokFeel</div>
+      <div class="footer-links">
+        <a href="https://app.lokfeel.com/about">About Us</a>
+        <a href="https://app.lokfeel.com/careers">Careers</a>
+        <a href="https://app.lokfeel.com/press">Press</a>
+        <a href="https://app.lokfeel.com/privacy">Privacy</a>
+        <a href="https://app.lokfeel.com/terms">Terms</a>
+        <a href="https://app.lokfeel.com/community-guidelines">Community Guidelines</a>
+        <a href="https://app.lokfeel.com/support">Support</a>
+        <a href="https://app.lokfeel.com/safety-tips">Safety Tips</a>
+        <a href="mailto:hello@lokfeel.com">Contact</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://twitter.com/lokfee" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://instagram.com/lokfee" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://facebook.com/lokfee" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+      <p class="footer-copy">&copy; 2026 LokFeel. Real Matches. Real Connection. No Swiping.</p>
+    </div>
   </footer>
 
   <script>

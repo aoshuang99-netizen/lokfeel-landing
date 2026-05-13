@@ -635,7 +635,7 @@
 
     /* Footer */
     footer {
-      padding: 32px 48px;
+      padding: 40px 48px;
       background: rgba(8,8,20,0.95);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -646,7 +646,7 @@
       z-index: 2;
     }
     .footer-inner {
-      max-width: 1100px;
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -663,10 +663,21 @@
       justify-content: center;
     }
     .footer-links a { color: inherit; text-decoration: none; white-space: nowrap; }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
     .footer-copy {
       font-size: 13px;
       color: rgba(255,255,255,0.3);
     }
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .footer-social a {
+      color: rgba(255,255,255,0.4);
+      transition: color 0.2s;
+    }
+    .footer-social a:hover { color: rgba(255,255,255,0.8); }
 
     /* ═══════════════════════════════════════════════════
        移动端适配 - 全面修复按钮布局重叠
@@ -1044,9 +1055,27 @@
     <div class="footer-inner">
       <div class="footer-brand">LokFeel</div>
       <div class="footer-links">
+        <a href="https://app.lokfeel.com/about">About Us</a>
+        <a href="https://app.lokfeel.com/careers">Careers</a>
+        <a href="https://app.lokfeel.com/press">Press</a>
         <a href="https://app.lokfeel.com/privacy">Privacy</a>
+        <a href="https://app.lokfeel.com/cookies">Cookies</a>
         <a href="https://app.lokfeel.com/terms">Terms</a>
+        <a href="https://app.lokfeel.com/community-guidelines">Community Guidelines</a>
+        <a href="https://app.lokfeel.com/support">Support</a>
+        <a href="https://app.lokfeel.com/safety-tips">Safety Tips</a>
         <a href="mailto:hello@lokfeel.com">Contact</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://twitter.com/lokfee" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://instagram.com/lokfee" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://facebook.com/lokfee" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
       </div>
       <p class="footer-copy">&copy; 2026 LokFeel. Real Matches. Real Connection. No Swiping.</p>
     </div>
