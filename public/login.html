@@ -496,7 +496,7 @@
       <a href="#">Stories</a>
       <a href="#">Safety</a>
       <button class="btn-login-active">Log In</button>
-      <a href="register.html" class="btn-signup">Sign Up</a>
+      <a href="https://app.lokfeel.com/register" class="btn-signup">Sign Up</a>
     </div>
   </nav>
 
@@ -531,7 +531,7 @@
         <span>or continue with email</span>
       </div>
 
-      <form>
+      <form id="loginForm">
         <div class="form-group">
           <label for="email">Email or Phone</label>
           <input type="text" id="email" placeholder="Enter your email or phone" required>
@@ -545,12 +545,12 @@
             <input type="checkbox" id="remember">
             <span>Remember me</span>
           </div>
-          <a href="#" class="forgot-link">Forgot password?</a>
+          <a href="https://app.lokfeel.com/forgot-password" class="forgot-link">Forgot password?</a>
         </div>
         <button type="submit" class="btn-submit">Log In</button>
       </form>
 
-      <a href="register.html" class="btn-create">Create Account</a>
+      <a href="https://app.lokfeel.com/register" class="btn-create">Create Account</a>
     </div>
   </div>
 
@@ -584,6 +584,20 @@
   </footer>
 
   <!-- 视频兼容性脚本 -->
+  <script>
+  // Login form redirect to app.lokfeel.com
+  (function() {
+    'use strict';
+    var form = document.getElementById('loginForm');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var email = document.getElementById('email').value.trim();
+        window.location.href = 'https://app.lokfeel.com/login' + (email ? '?email=' + encodeURIComponent(email) : '');
+      });
+    }
+  })();
+  </script>
   <script>
   (function() {
     'use strict';

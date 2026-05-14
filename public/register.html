@@ -504,7 +504,7 @@
       <a href="#">About</a>
       <a href="#">Stories</a>
       <a href="#">Safety</a>
-      <a href="login.html" class="btn-login">Log In</a>
+      <a href="https://app.lokfeel.com/login" class="btn-login">Log In</a>
       <button class="btn-signup-active">Sign Up</button>
     </div>
   </nav>
@@ -552,7 +552,7 @@
         <span>or continue with email</span>
       </div>
 
-      <form>
+      <form id="registerForm">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" id="name" placeholder="Your name" required>
@@ -581,13 +581,13 @@
         </div>
         <div class="form-options">
           <input type="checkbox" id="terms" required>
-          <label for="terms" style="cursor:pointer">I agree to the <a href="#" style="color:#60a5fa">Terms</a> and <a href="#" style="color:#60a5fa">Privacy Policy</a></label>
+          <label for="terms" style="cursor:pointer">I agree to the <a href="https://app.lokfeel.com/terms" style="color:#60a5fa">Terms</a> and <a href="https://app.lokfeel.com/privacy" style="color:#60a5fa">Privacy Policy</a></label>
         </div>
         <button type="submit" class="btn-submit">Send Verification Code →</button>
       </form>
 
       <p class="login-link">
-        Already have an account? <a href="login.html">Sign in</a>
+        Already have an account? <a href="https://app.lokfeel.com/login">Sign in</a>
       </p>
     </div>
   </div>
@@ -649,6 +649,19 @@
         opt.value = d;
         opt.textContent = d;
         daySel.appendChild(opt);
+      }
+    })();
+
+    // Register form redirect to app.lokfeel.com
+    (function() {
+      'use strict';
+      var form = document.getElementById('registerForm');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var email = document.getElementById('email').value.trim();
+          window.location.href = 'https://app.lokfeel.com/register' + (email ? '?email=' + encodeURIComponent(email) : '');
+        });
       }
     })();
 
