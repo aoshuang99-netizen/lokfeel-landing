@@ -154,7 +154,8 @@ function Hero() {
           onLoadedData={() => setVideoLoaded(true)}
           onCanPlay={() => setVideoLoaded(true)}
         >
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/assets/video/background-desktop-1080p.mp4" type="video/mp4" />
+          <source src="/assets/video/background-desktop-1080p.webm" type="video/webm" />
         </video>
         {/* Fallback: always show image behind video */}
         {!videoLoaded && (
@@ -427,210 +428,6 @@ function HowSection() {
     </section>
   )
 }
-
-/* ═══════════════════════════════════════════════════════════════
-   STORIES - Dark immersive carousel
-   ═══════════════════════════════════════════════════════════════ */
-function StoriesSection() {
-  const { ref, inView } = useInView()
-  const [activeStory, setActiveStory] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
-
-  const stories: Array<{name: string; couple: string; quote: string; image: string; result: string; highlight: string; avatar: string}> = [
-    {
-      name: 'Sarah & Michael',
-      couple: 'Married Spring 2025',
-      quote: "Matched in 3 weeks. The compatibility report was accurate.",
-      image: '/images/case-1-sarah.jpg',
-      avatar: '/images/avatar-sarah.jpg',
-      result: 'Married Spring 2025',
-      highlight: 'Compatibility Report',
-    },
-    {
-      name: 'James & Emma',
-      couple: 'Together 18 months',
-      quote: "Finally, an app that focuses on who you are.",
-      image: '/images/case-4-james.jpg',
-      avatar: '/images/avatar-james.jpg',
-      result: 'Together 18 months',
-      highlight: 'Authentic Matching',
-    },
-    {
-      name: 'David & Chen',
-      couple: 'Engaged 2025',
-      quote: "Long distance. LokFeel brought us together.",
-      image: '/images/case-2-marcus.jpg',
-      avatar: '/images/avatar-marcus.jpg',
-      result: 'Engaged 2025',
-      highlight: 'Long Distance',
-    },
-    {
-      name: 'Priya & Alexander',
-      couple: 'Together 1 year',
-      quote: "The relationship structure matching changed everything for us.",
-      image: '/images/case-5-priya.jpg',
-      avatar: '/images/avatar-priya.jpg',
-      result: 'Together 1 year',
-      highlight: 'Structure Matching',
-    },
-    {
-      name: 'Elena & Marcus',
-      couple: 'Engaged after 14 months',
-      quote: "Quality over quantity. Every match was intentional.",
-      image: '/images/case-3-elena.jpg',
-      avatar: '/images/avatar-elena.jpg',
-      result: 'Engaged after 14 months',
-      highlight: 'Quality Matches',
-    },
-  ]
-
-  useEffect(() => {
-    if (!inView || isPaused) return
-    const interval = setInterval(() => {
-      setActiveStory((prev) => (prev + 1) % stories.length)
-    }, 4000)
-    return () => clearInterval(interval)
-  }, [inView, stories.length, isPaused])
-
-  return (
-    <section className="py-16 md:py-24 overflow-hidden bg-[#0a0a0a]" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        {/* Header */}
-        <div className="text-center mb-8 md:mb-12">
-          <p className={`text-xs uppercase tracking-widest text-[#f472b6]/70 mb-3 transition-all duration-700 ${inView ? 'opacity-100' : 'opacity-0'}`}>
-            Success Stories
-          </p>
-          <h2 className={`font-display text-2xl sm:text-3xl md:text-4xl tracking-tight text-white transition-all duration-700 delay-100 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Real connections, real professionals
-          </h2>
-        </div>
-
-        {/* Main Carousel */}
-        <div
-          className="relative"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          role="region"
-          aria-roledescription="carousel"
-          aria-label="User success stories"
-        >
-          <div className={`relative aspect-[16/10] md:aspect-[21/9] rounded-2xl overflow-hidden transition-all duration-700 ${inView ? 'opacity-100 scale-100' : 'opacity-95 scale-98'}`}>
-            {stories.map((story, i) => (
-              <div
-                key={i}
-                className={`absolute inset-0 transition-all duration-700 ease-out ${activeStory === i ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
-              >
-                <img
-                  src={story.image}
-                  alt={`Story of ${story.name}`}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/90 via-[#0a0a0a]/40 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/50 via-transparent to-transparent" />
-              </div>
-            ))}
-
-            {/* Content overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8">
-              <div className="flex items-end justify-between gap-4">
-                <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="relative">
-                    <img
-                      src={stories[activeStory].avatar}
-                      alt={`Avatar of ${stories[activeStory].name}`}
-                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full object-cover ring-2 ring-[#a3e635]/30"
-                    />
-                    <div className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-[#a3e635] rounded-full ring-2 ring-[#0a0a0a]" />
-                  </div>
-                  <div>
-                    <span className="inline-block bg-[#4c1d95]/40 backdrop-blur-sm text-[#a78bfa] text-[10px] sm:text-xs px-2 py-0.5 rounded-full mb-1">
-                      {stories[activeStory].highlight}
-                    </span>
-                    <p className="text-white font-bold text-base sm:text-lg md:text-xl">{stories[activeStory].name}</p>
-                    <p className="text-white/50 text-xs sm:text-sm">{stories[activeStory].couple} · {stories[activeStory].result}</p>
-                  </div>
-                </div>
-
-                <div className="hidden md:block max-w-md">
-                  <p className="text-white/70 text-sm md:text-base italic">
-                    &ldquo;{stories[activeStory].quote}&rdquo;
-                  </p>
-                </div>
-              </div>
-
-              <p className="md:hidden text-white/60 text-xs mt-3 italic">
-                &ldquo;{stories[activeStory].quote}&rdquo;
-              </p>
-            </div>
-
-            {/* Counter badge */}
-            <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-medium">
-              {String(activeStory + 1).padStart(2, '0')} / {String(stories.length).padStart(2, '0')}
-            </div>
-
-            {/* Navigation arrows */}
-            <button
-              onClick={() => setActiveStory((prev) => (prev - 1 + stories.length) % stories.length)}
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/40 backdrop-blur-sm text-white flex items-center justify-center hover:bg-black/60 transition-colors"
-              aria-label="Previous story"
-            >
-              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              onClick={() => setActiveStory((prev) => (prev + 1) % stories.length)}
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/40 backdrop-blur-sm text-white flex items-center justify-center hover:bg-black/60 transition-colors"
-              aria-label="Next story"
-            >
-              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Thumbnails */}
-          <div className="flex justify-center gap-2 sm:gap-3 mt-4 sm:mt-6">
-            {stories.map((story, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveStory(i)}
-                className={`relative overflow-hidden rounded-lg transition-all duration-300 ${
-                  activeStory === i
-                    ? 'w-16 sm:w-20 md:w-24 h-12 sm:h-14 md:h-16 ring-2 ring-[#a3e635]'
-                    : 'w-10 sm:w-12 md:w-14 h-12 sm:h-14 md:h-16 opacity-50 hover:opacity-70'
-                }`}
-                aria-label={`View story of ${story.name}`}
-              >
-                <OptimizedImg
-                  src={story.avatar}
-                  alt={`Avatar of ${story.name}`}
-                  className="w-full h-full object-cover"
-                />
-                {activeStory === i && (
-                  <div className="absolute inset-0 bg-[#a3e635]/10" />
-                )}
-              </button>
-            ))}
-          </div>
-
-          {/* Progress indicators */}
-          <div className="flex justify-center gap-1.5 mt-3">
-            {stories.map((_, i) => (
-              <div
-                key={i}
-                className={`h-1 rounded-full transition-all duration-300 ${
-                  activeStory === i ? 'w-6 bg-[#a3e635]' : 'w-1 bg-white/15'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 /* ═══════════════════════════════════════════════════════════════
    CTA - Dateasy Dark with lime CTA
    ═══════════════════════════════════════════════════════════════ */
@@ -687,34 +484,31 @@ function CTASection() {
    ═══════════════════════════════════════════════════════════════ */
 function Footer() {
   const companyLinks = [
-    { label: 'About', href: '/about' },
-    { label: 'Careers', href: '/careers' },
-    { label: 'Press', href: '/press' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Testimonials', href: '/testimonials' },
     { label: 'Contact', href: '/contact' },
   ];
   const supportLinks = [
     { label: 'FAQ', href: '/faq' },
-    { label: 'Safety Tips', href: '/safety-tips' },
-    { label: 'Community Guidelines', href: '/community-guidelines' },
-    { label: 'Support', href: '/support' },
     { label: 'Refunds', href: '/refunds' },
     { label: 'Cancellations Policy', href: '/cancellations-policy' },
+    { label: 'Appeals Policy', href: '/content-removal-appeals-policy' },
   ];
   const legalLinks = [
-    { label: 'Terms of Service', href: '/terms' },
-    { label: 'Privacy Policy', href: '/privacy' },
-    { label: 'Cookie Policy', href: '/cookies' },
-    { label: 'DMCA', href: '/dmca' },
+    { label: 'Terms', href: '/terms' },
+    { label: 'Privacy', href: '/privacy' },
+    { label: 'Cookie Notice', href: '/cookie-notice' },
+    { label: 'Acceptable Use Policy', href: '/terms#use-policy' },
     { label: '18 U.S.C. 2257', href: '/18-usc-2257' },
-    { label: 'Appeals Policy', href: '/content-removal-appeals-policy' },
-    { label: 'Fan/Creator Agreement', href: '/fan-creator-agreement' },
+    { label: 'DMCA', href: '/terms#dmca' },
+    { label: 'Fan / Creator Agreement', href: '/contract-between-fan-and-creator' },
   ];
 
   return (
     <footer className="pt-16 pb-8 border-t border-white/5 bg-[#0a0a0a]">
       <div className="max-w-6xl mx-auto px-6">
-        {/* 3-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        {/* 4-column grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Company */}
           <div>
             <h3 className="text-sm font-semibold text-white/80 tracking-wider uppercase mb-4">Company</h3>
@@ -756,6 +550,33 @@ function Footer() {
               ))}
             </ul>
           </div>
+
+          {/* Social Media */}
+          <div>
+            <h3 className="text-sm font-semibold text-white/80 tracking-wider uppercase mb-4">Follow Us</h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="https://www.facebook.com/aluaapp" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#1877F2] transition-colors inline-flex items-center gap-2">
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/aluamessenger" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#E4405F] transition-colors inline-flex items-center gap-2">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com/AluaCreators" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors inline-flex items-center gap-2">
+                  X (Twitter)
+                </a>
+              </li>
+              <li>
+                <a href="https://alua.com/terms#dmca" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#a3e635] transition-colors inline-flex items-center gap-2">
+                  DMCA Protection
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Divider + Bottom row */}
@@ -764,7 +585,7 @@ function Footer() {
             <span className="font-bold text-white/90 text-sm">LokFee!</span>
             <span className="text-white/30 text-xs">Relationship Matching Engine</span>
           </div>
-
+          
           <div className="flex items-center gap-4 text-xs text-white/30">
             <a href="/terms" className="hover:text-white/50 transition-colors">Terms</a>
             <a href="/privacy" className="hover:text-white/50 transition-colors">Privacy</a>
@@ -779,6 +600,7 @@ function Footer() {
     </footer>
   )
 }
+
 
 /* ═══════════════════════════════════════════════════════════════
    APP
@@ -798,7 +620,6 @@ function App() {
         <Hero />
         <AboutSection />
         <HowSection />
-        <StoriesSection />
         <CTASection />
       </main>
       <Footer />
