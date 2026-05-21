@@ -579,21 +579,15 @@ function Footer() {
           </div>
         </div>
 
-        {/* Divider + Bottom row */}
+        {/* Divider + Bottom row — 简化为 logo + copyright，不重复 Legal 栏 */}
         <div className="border-t border-white/5 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-white/90 text-sm">LokFee!</span>
+            <span className="font-bold text-white/90 text-sm">LokFeel</span>
             <span className="text-white/30 text-xs">Relationship Matching Engine</span>
-          </div>
-          
-          <div className="flex items-center gap-4 text-xs text-white/30">
-            <a href="/terms" className="hover:text-white/50 transition-colors">Terms</a>
-            <a href="/privacy" className="hover:text-white/50 transition-colors">Privacy</a>
-            <a href="/cookies" className="hover:text-white/50 transition-colors">Cookies</a>
           </div>
 
           <p className="text-xs text-white/25">
-            © {new Date().getFullYear()} LokFee! Inc. All rights reserved.
+            © {new Date().getFullYear()} LokFeel Inc. All rights reserved.
           </p>
         </div>
       </div>
