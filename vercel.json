@@ -1,6 +1,6 @@
 {
-  "buildCommand": "echo 'static site - no build needed'",
-  "outputDirectory": "public",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [

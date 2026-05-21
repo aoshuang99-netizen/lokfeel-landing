@@ -436,51 +436,51 @@ function StoriesSection() {
   const [activeStory, setActiveStory] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
 
-  const stories: Array<{name: string; role: string; quote: string; image: string; result: string; highlight: string; avatar: string}> = [
+  const stories: Array<{name: string; couple: string; quote: string; image: string; result: string; highlight: string; avatar: string}> = [
     {
-      name: 'Sarah, 32',
-      role: 'Architect',
-      quote: "I control who reaches me. The matching engine explained why David and I connect.",
+      name: 'Sarah & Michael',
+      couple: 'Married Spring 2025',
+      quote: "Matched in 3 weeks. The compatibility report was accurate.",
       image: '/images/case-1-sarah.jpg',
       avatar: '/images/avatar-sarah.jpg',
-      result: 'Together for 8 months',
-      highlight: 'Women-first control',
+      result: 'Married Spring 2025',
+      highlight: 'Compatibility Report',
     },
     {
-      name: 'Marcus, 29',
-      role: 'Finance Analyst',
-      quote: "The relationship structure matching is brilliant. No guessing games.",
-      image: '/images/case-2-marcus.jpg',
-      avatar: '/images/avatar-marcus.jpg',
-      result: 'Engaged after 6 months',
-      highlight: 'Structure matching',
-    },
-    {
-      name: 'Elena, 35',
-      role: 'Creative Director',
-      quote: "I only see verified professionals who match my goals. Quality over quantity.",
-      image: '/images/case-3-elena.jpg',
-      avatar: '/images/avatar-elena.jpg',
-      result: 'Together for 1 year',
-      highlight: 'Verified professionals',
-    },
-    {
-      name: 'James, 31',
-      role: 'Tech Entrepreneur',
-      quote: "The algorithm matched me with someone complementary. It actually works.",
+      name: 'James & Emma',
+      couple: 'Together 18 months',
+      quote: "Finally, an app that focuses on who you are.",
       image: '/images/case-4-james.jpg',
       avatar: '/images/avatar-james.jpg',
-      result: 'Married after 10 months',
-      highlight: 'AI matching engine',
+      result: 'Together 18 months',
+      highlight: 'Authentic Matching',
     },
     {
-      name: 'Priya, 28',
-      role: 'Physician',
-      quote: "LokFee! lets me set the pace. Every match came with a clear reason.",
+      name: 'David & Chen',
+      couple: 'Engaged 2025',
+      quote: "Long distance. LokFeel brought us together.",
+      image: '/images/case-2-marcus.jpg',
+      avatar: '/images/avatar-marcus.jpg',
+      result: 'Engaged 2025',
+      highlight: 'Long Distance',
+    },
+    {
+      name: 'Priya & Alexander',
+      couple: 'Together 1 year',
+      quote: "The relationship structure matching changed everything for us.",
       image: '/images/case-5-priya.jpg',
       avatar: '/images/avatar-priya.jpg',
-      result: 'Together for 6 months',
-      highlight: 'Purposeful matching',
+      result: 'Together 1 year',
+      highlight: 'Structure Matching',
+    },
+    {
+      name: 'Elena & Marcus',
+      couple: 'Engaged after 14 months',
+      quote: "Quality over quantity. Every match was intentional.",
+      image: '/images/case-3-elena.jpg',
+      avatar: '/images/avatar-elena.jpg',
+      result: 'Engaged after 14 months',
+      highlight: 'Quality Matches',
     },
   ]
 
@@ -520,7 +520,7 @@ function StoriesSection() {
                 key={i}
                 className={`absolute inset-0 transition-all duration-700 ease-out ${activeStory === i ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
               >
-                <OptimizedImg
+                <img
                   src={story.image}
                   alt={`Story of ${story.name}`}
                   className="w-full h-full object-cover"
@@ -535,7 +535,7 @@ function StoriesSection() {
               <div className="flex items-end justify-between gap-4">
                 <div className="flex items-center gap-3 sm:gap-4">
                   <div className="relative">
-                    <OptimizedImg
+                    <img
                       src={stories[activeStory].avatar}
                       alt={`Avatar of ${stories[activeStory].name}`}
                       className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full object-cover ring-2 ring-[#a3e635]/30"
@@ -547,7 +547,7 @@ function StoriesSection() {
                       {stories[activeStory].highlight}
                     </span>
                     <p className="text-white font-bold text-base sm:text-lg md:text-xl">{stories[activeStory].name}</p>
-                    <p className="text-white/50 text-xs sm:text-sm">{stories[activeStory].role} · {stories[activeStory].result}</p>
+                    <p className="text-white/50 text-xs sm:text-sm">{stories[activeStory].couple} · {stories[activeStory].result}</p>
                   </div>
                 </div>
 
@@ -683,25 +683,96 @@ function CTASection() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   FOOTER - Minimal Dark
+   FOOTER - 3-Column Dating App Style
    ═══════════════════════════════════════════════════════════════ */
 function Footer() {
+  const companyLinks = [
+    { label: 'About', href: '/about' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'Press', href: '/press' },
+    { label: 'Contact', href: '/contact' },
+  ];
+  const supportLinks = [
+    { label: 'FAQ', href: '/faq' },
+    { label: 'Safety Tips', href: '/safety-tips' },
+    { label: 'Community Guidelines', href: '/community-guidelines' },
+    { label: 'Support', href: '/support' },
+    { label: 'Refunds', href: '/refunds' },
+    { label: 'Cancellations Policy', href: '/cancellations-policy' },
+  ];
+  const legalLinks = [
+    { label: 'Terms of Service', href: '/terms' },
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Cookie Policy', href: '/cookies' },
+    { label: 'DMCA', href: '/dmca' },
+    { label: '18 U.S.C. 2257', href: '/18-usc-2257' },
+    { label: 'Appeals Policy', href: '/content-removal-appeals-policy' },
+    { label: 'Fan/Creator Agreement', href: '/fan-creator-agreement' },
+  ];
+
   return (
-    <footer className="py-12 border-t border-white/5 bg-[#0a0a0a]">
+    <footer className="pt-16 pb-8 border-t border-white/5 bg-[#0a0a0a]">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* 3-column grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+          {/* Company */}
+          <div>
+            <h3 className="text-sm font-semibold text-white/80 tracking-wider uppercase mb-4">Company</h3>
+            <ul className="space-y-2">
+              {companyLinks.map(l => (
+                <li key={l.href}>
+                  <a href={l.href} className="text-sm text-white/40 hover:text-[#a3e635] transition-colors">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h3 className="text-sm font-semibold text-white/80 tracking-wider uppercase mb-4">Support</h3>
+            <ul className="space-y-2">
+              {supportLinks.map(l => (
+                <li key={l.href}>
+                  <a href={l.href} className="text-sm text-white/40 hover:text-[#a3e635] transition-colors">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h3 className="text-sm font-semibold text-white/80 tracking-wider uppercase mb-4">Legal</h3>
+            <ul className="space-y-2">
+              {legalLinks.map(l => (
+                <li key={l.href}>
+                  <a href={l.href} className="text-sm text-white/40 hover:text-[#a3e635] transition-colors">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Divider + Bottom row */}
+        <div className="border-t border-white/5 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-white">LokFee!</span>
+            <span className="font-bold text-white/90 text-sm">LokFee!</span>
+            <span className="text-white/30 text-xs">Relationship Matching Engine</span>
           </div>
 
-          <div className="flex items-center gap-6 text-sm text-white/40">
-            <a href="https://app.lokfeel.com/privacy" className="hover:text-white/70 transition-colors">Privacy</a>
-            <a href="https://app.lokfeel.com/terms" className="hover:text-white/70 transition-colors">Terms</a>
-            <a href="mailto:hello@lokfeel.com" className="hover:text-white/70 transition-colors">Contact</a>
+          <div className="flex items-center gap-4 text-xs text-white/30">
+            <a href="/terms" className="hover:text-white/50 transition-colors">Terms</a>
+            <a href="/privacy" className="hover:text-white/50 transition-colors">Privacy</a>
+            <a href="/cookies" className="hover:text-white/50 transition-colors">Cookies</a>
           </div>
 
-          <p className="text-sm text-white/30">
-            © {new Date().getFullYear()} LokFee!
+          <p className="text-xs text-white/25">
+            © {new Date().getFullYear()} LokFee! Inc. All rights reserved.
           </p>
         </div>
       </div>
