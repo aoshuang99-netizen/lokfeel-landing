@@ -4,7 +4,7 @@ import { defineConfig } from "vite"
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './',
+  base: '/',  // ✅ 修复：使用绝对路径，匹配视频路径 /assets/video/...
   plugins: [react()],
   resolve: {
     alias: {
