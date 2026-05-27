@@ -1,0 +1,121 @@
+/* ================================================
+   DATEASY DARK BACKGROUND — LokFeel Landing
+   Dark immersive with purple/lime accents (NOT blue)
+   ================================================ */
+
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(76, 29, 149, 0.12) 0%,
+    rgba(10, 10, 10, 0.05) 30%,
+    rgba(10, 10, 10, 0.35) 60%,
+    rgba(10, 10, 10, 0.92) 100%
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Purple glow orb — Dateasy Dark primary accent */
+.purple-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 5;
+  animation: float 10s ease-in-out infinite;
+}
+
+.purple-glow-orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(76, 29, 149, 0.2) 0%, transparent 70%);
+  bottom: 0;
+  left: 0;
+}
+
+/* Lime glow orb — Dateasy Dark secondary accent (top right) */
+.lime-glow-orb {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(163, 230, 53, 0.08) 0%, transparent 70%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 5;
+  top: 5%;
+  right: -8%;
+  animation: float 12s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+/* ================================================
+   MILLISECOND-LEVEL LOAD OPTIMIZATION
+   Critical CSS inlining + Preload
+   ================================================ */
+
+/* Preload critical fonts */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Outfit Regular'), local('Outfit-Regular');
+}
+
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Sora Bold'), local('Sora-Bold');
+}
+
+/* Critical above-fold styles — inline for millisecond load */
+.critical-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+/* Skeleton screen for millisecond-level perceived performance */
+.skeleton-base {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Prefers reduced data — skip non-critical resources */
+@media (prefers-reduced-data: reduce) {
+  video {
+    display: none !important;
+  }
+  
+  .purple-glow-orb,
+  .lime-glow-orb {
+    display: none !important;
+  }
+}
+
+/* Connection-aware loading — 2g/3g skip heavy resources */
+@media (max-width: 768px) and (prefers-reduced-data: reduce) {
+  .hero-video-container {
+    background: #0a0a0a;
+  }
+  
+  .hero-gradient-overlay {
+    background: rgba(10, 10, 10, 0.8);
+  }
+}

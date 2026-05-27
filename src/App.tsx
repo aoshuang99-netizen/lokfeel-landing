@@ -53,7 +53,7 @@ function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <span className="font-display text-xl font-bold tracking-tight text-white">LokFee!</span>
+            <span className="font-display text-xl font-bold tracking-tight text-white">LokFeel</span>
           </a>
 
           {/* Desktop links */}
@@ -141,6 +141,13 @@ function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ minHeight: '100dvh' }}>
+      {/* Dark Gradient Overlay — Dateasy Dark theme */}
+      <div className="hero-gradient-overlay" />
+      
+      {/* Purple + Lime glow orbs — Dateasy Dark atmosphere */}
+      <div className="purple-glow-orb purple-glow-orb-1" aria-hidden="true" />
+      <div className="lime-glow-orb" aria-hidden="true" />
+
       {/* Video Background — lazy loaded, with image fallback */}
       <div className="hero-video-container" aria-hidden="true">
         <video
