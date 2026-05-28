@@ -91,16 +91,16 @@ body {
   filter: brightness(0.6) contrast(1.1) saturate(0.85);
 }
 
-/* Dark overlay for text readability — Dateasy Dark purple tint */
+/* Dark overlay for text readability — Feeld purple tint */
 .hero-video-container::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(76, 29, 149, 0.15) 0%,
-    rgba(10, 10, 10, 0.10) 40%,
-    rgba(10, 10, 10, 0.50) 80%,
+    rgba(76, 29, 149, 0.25) 0%,
+    rgba(10, 10, 10, 0.15) 40%,
+    rgba(10, 10, 10, 0.45) 80%,
     rgba(10, 10, 10, 0.92) 100%
   );
 }
@@ -453,152 +453,5 @@ body {
   }
   .safe-area-bottom {
     padding-bottom: env(safe-area-inset-bottom);
-  }
-}
-
-/* ================================================
-   BLUE GRADIENT BACKGROUND — Import blue-gradient.css
-   ================================================ */
-/* ================================================
-   BLUE GRADIENT BACKGROUND — LokFeel Signature
-   Add to Landing page for blue atmosphere
-   ================================================ */
-
-.hero-gradient-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(59, 130, 246, 0.15) 0%,
-    rgba(10, 10, 10, 0.05) 30%,
-    rgba(10, 10, 10, 0.25) 60%,
-    rgba(10, 10, 10, 0.92) 100%
-  );
-  pointer-events: none;
-  z-index: 10;
-}
-
-/* Blue glow orbs — ambient atmosphere */
-.blue-glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  pointer-events: none;
-  z-index: 5;
-  animation: float 8s ease-in-out infinite;
-}
-
-.blue-glow-orb-1 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
-  top: 10%;
-  left: -5%;
-  animation-delay: 0s;
-}
-
-.blue-glow-orb-2 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
-  bottom: 15%;
-  right: -5%;
-  animation-delay: 2s;
-}
-
-.blue-glow-orb-3 {
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, transparent 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: 4s;
-}
-
-/* Purple glow orbs — secondary atmosphere */
-.purple-glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  pointer-events: none;
-  z-index: 5;
-  animation: float 10s ease-in-out infinite;
-}
-
-.purple-glow-orb-1 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(76, 29, 149, 0.2) 0%, transparent 70%);
-  bottom: 0;
-  left: 0;
-}
-
-/* ================================================
-   MILLISECOND-LEVEL LOAD OPTIMIZATION
-   Critical CSS inlining + Preload
-   ================================================ */
-
-/* Preload critical fonts */
-@font-face {
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Outfit Regular'), local('Outfit-Regular');
-}
-
-@font-face {
-  font-family: 'Sora';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Sora Bold'), local('Sora-Bold');
-}
-
-/* Critical above-fold styles — inline for millisecond load */
-.critical-hero {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: #0a0a0a;
-}
-
-/* Skeleton screen for millisecond-level perceived performance */
-.skeleton-base {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.03) 25%,
-    rgba(255, 255, 255, 0.06) 50%,
-    rgba(255, 255, 255, 0.03) 75%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
-
-/* Prefers reduced data — skip non-critical resources */
-@media (prefers-reduced-data: reduce) {
-  video {
-    display: none !important;
-  }
-  
-  .blue-glow-orb,
-  .purple-glow-orb {
-    display: none !important;
-  }
-}
-
-/* Connection-aware loading — 2g/3g skip heavy resources */
-@media (max-width: 768px) and (prefers-reduced-data: reduce) {
-  .hero-video-container {
-    background: #0a0a0a;
-  }
-  
-  .hero-gradient-overlay {
-    background: rgba(10, 10, 10, 0.8);
   }
 }
