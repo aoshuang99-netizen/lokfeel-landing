@@ -53,7 +53,7 @@ function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <span className="font-display text-xl font-bold tracking-tight text-white">LokFee!</span>
+            <span className="font-display text-xl font-bold tracking-tight text-white">LokFeel</span>
           </a>
 
           {/* Desktop links */}
@@ -175,19 +175,19 @@ function Hero() {
       {/* Content */}
       <div className="relative z-20 max-w-4xl mx-auto px-6 text-center text-white py-20">
         <h1 className={`font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1] mb-6 transition-all duration-700 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          Feel the connection
+          AI matches what
           <br />
-          <span className="text-gradient-lime">before you meet</span>
+          <span className="text-gradient-lime">swiping can't</span>
         </h1>
 
         <p className={`text-lg sm:text-xl text-white/60 max-w-xl mx-auto mb-8 sm:mb-10 transition-all duration-700 delay-100 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          5 curated matches weekly. Each with a reason why you click.
+          Our AI engine analyzes personality, values & chemistry. 5 curated matches weekly — each with a reason why.
         </p>
 
         {/* CTA Buttons — Lime primary */}
         <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-700 delay-200 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <a href="https://app.lokfeel.com/register" className="block w-full sm:w-auto">
-            <button className="btn-lime animate-glow-pulse rounded-full px-8 py-6 text-base font-semibold w-full sm:w-auto flex items-center justify-center gap-2 cursor-pointer border-none" aria-label="Start free registration on LokFee!">
+            <button className="btn-lime animate-glow-pulse rounded-full px-8 py-6 text-base font-semibold w-full sm:w-auto flex items-center justify-center gap-2 cursor-pointer border-none" aria-label="Start free registration on LokFeel">
               <Heart className="w-5 h-5" />
               Start Free
             </button>
@@ -235,7 +235,7 @@ function AboutSection() {
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden ring-1 ring-white/5">
               <OptimizedImg
                 src="/images/about-couple.jpg"
-                alt="Real couple connecting through LokFee!"
+                alt="Real couple connecting through LokFeel"
                 loading="lazy"
                 className="w-full h-full object-cover"
               />
@@ -243,22 +243,22 @@ function AboutSection() {
             </div>
             {/* Floating badge */}
             <div className="absolute -bottom-4 -right-4 bg-[#111111] border border-[#4c1d95]/20 rounded-xl p-4 shadow-xl">
-              <p className="text-3xl font-bold font-display text-gradient-lime">10K+</p>
-              <p className="text-sm text-white/40">Real connections made</p>
+              <p className="text-3xl font-bold font-display text-gradient-lime">AI</p>
+              <p className="text-sm text-white/40">Powered matching engine</p>
             </div>
           </div>
 
           {/* Right: Content */}
           <div className="text-center md:text-left">
             <h2 className={`font-display text-3xl sm:text-4xl md:text-5xl tracking-tight text-white transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Dating apps are exhausting.
+              Swiping is random. AI matching is intentional.
             </h2>
             <p className={`text-xl text-white/50 mt-6 transition-all duration-700 delay-100 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              We built LokFee! for people who want something real.
+              LokFeel's AI engine understands who you really are — and finds the people you'll genuinely click with.
             </p>
             <div className={`mt-8 transition-all duration-700 delay-200 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <a href="#how">
-                <button className="rounded-full px-6 py-2.5 text-sm font-medium border border-[#4c1d95]/30 text-[#a78bfa] hover:bg-[#4c1d95]/10 hover:border-[#4c1d95]/50 transition-all cursor-pointer bg-transparent inline-flex items-center gap-2" aria-label="Learn how LokFee! works">
+                <button className="rounded-full px-6 py-2.5 text-sm font-medium border border-[#4c1d95]/30 text-[#a78bfa] hover:bg-[#4c1d95]/10 hover:border-[#4c1d95]/50 transition-all cursor-pointer bg-transparent inline-flex items-center gap-2" aria-label="Learn how LokFeel works">
                   See how it works
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -282,20 +282,20 @@ function HowSection() {
   const steps = [
     {
       num: '01',
-      title: 'Share your story',
-      desc: 'A 5-minute conversation about what matters to you.',
+      title: 'Tell the AI who you are',
+      desc: 'A 5-minute conversation. Our engine learns your personality, values & patterns.',
       image: '/images/bg/photo-couple-main.jpg',
     },
     {
       num: '02',
-      title: 'Get curated matches',
-      desc: '5 handpicked people weekly, with explanations why you connect.',
+      title: 'Get AI-curated matches',
+      desc: '5 people weekly, selected by our matching engine — with explanations why.',
       image: '/images/bg/photo-team-1.jpg',
     },
     {
       num: '03',
-      title: 'Meet with intention',
-      desc: 'Skip the small talk. Start with genuine compatibility.',
+      title: 'Connect with confidence',
+      desc: 'Every match comes with compatibility insights. Skip the guesswork.',
       image: '/images/bg/photo-team-2.jpg',
     },
   ]
@@ -438,15 +438,15 @@ function CTASection() {
     <section className="py-24 md:py-32 bg-[#111111]" ref={ref}>
       <div className="max-w-2xl mx-auto px-6 text-center">
         <h2 className={`font-display text-3xl sm:text-4xl tracking-tight mb-6 text-white transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          Ready for real connection?
+          Let AI find your match
         </h2>
         <p className={`text-white/50 mb-8 transition-all duration-700 delay-100 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          Join the early access. Women get premium features free — forever.
+          Join the AI matching revolution. Women get premium features free — forever.
         </p>
 
         {/* App Download Buttons */}
         <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 transition-all duration-700 delay-200 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <a href="https://apps.apple.com/app/lokfeel" target="_blank" rel="noopener noreferrer" aria-label="Download LokFee! from the App Store (opens in new tab)">
+          <a href="https://apps.apple.com/app/lokfeel" target="_blank" rel="noopener noreferrer" aria-label="Download LokFeel from the App Store (opens in new tab)">
             <button className="rounded-xl px-6 h-14 gap-3 border border-white/15 text-white hover:bg-white/5 transition-all flex items-center cursor-pointer bg-transparent">
               <Apple className="w-6 h-6" />
               <div className="text-left">
@@ -455,7 +455,7 @@ function CTASection() {
               </div>
             </button>
           </a>
-          <a href="https://play.google.com/store/apps/details?id=com.lokfeel.app" target="_blank" rel="noopener noreferrer" aria-label="Download LokFee! from Google Play (opens in new tab)">
+          <a href="https://play.google.com/store/apps/details?id=com.lokfeel.app" target="_blank" rel="noopener noreferrer" aria-label="Download LokFeel from Google Play (opens in new tab)">
             <button className="rounded-xl px-6 h-14 gap-3 border border-white/15 text-white hover:bg-white/5 transition-all flex items-center cursor-pointer bg-transparent">
               <Play className="w-6 h-6" />
               <div className="text-left">
@@ -483,62 +483,28 @@ function CTASection() {
    FOOTER - 3-Column Dating App Style
    ═══════════════════════════════════════════════════════════════ */
 function Footer() {
-  const companyLinks = [
-    { label: 'Blog', href: '/blog' },
-    { label: 'Testimonials', href: '/testimonials' },
-    { label: 'Contact', href: '/contact' },
-  ];
-  const supportLinks = [
-    { label: 'FAQ', href: '/faq' },
-    { label: 'Refunds', href: '/refunds' },
-    { label: 'Cancellations Policy', href: '/cancellations-policy' },
-    { label: 'Appeals Policy', href: '/content-removal-appeals-policy' },
-  ];
   const legalLinks = [
-    { label: 'Terms', href: '/terms' },
-    { label: 'Privacy', href: '/privacy' },
-    { label: 'Cookie Notice', href: '/cookie-notice' },
-    { label: 'Acceptable Use Policy', href: '/terms#use-policy' },
-    { label: '18 U.S.C. 2257', href: '/18-usc-2257' },
-    { label: 'DMCA', href: '/terms#dmca' },
-    { label: 'Fan / Creator Agreement', href: '/contract-between-fan-and-creator' },
+    { label: 'Terms of Service', href: 'https://app.lokfeel.com/terms' },
+    { label: 'Privacy Policy', href: 'https://app.lokfeel.com/privacy' },
   ];
 
   return (
     <footer className="pt-16 pb-8 border-t border-white/5 bg-[#0a0a0a]">
       <div className="max-w-6xl mx-auto px-6">
-        {/* 4-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-          {/* Company */}
+        {/* Simple 2-column grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+          {/* Brand */}
           <div>
-            <h3 className="text-sm font-semibold text-white/80 tracking-wider uppercase mb-4">Company</h3>
-            <ul className="space-y-2">
-              {companyLinks.map(l => (
-                <li key={l.href}>
-                  <a href={l.href} className="text-sm text-white/40 hover:text-[#a3e635] transition-colors">
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Support */}
-          <div>
-            <h3 className="text-sm font-semibold text-white/80 tracking-wider uppercase mb-4">Support</h3>
-            <ul className="space-y-2">
-              {supportLinks.map(l => (
-                <li key={l.href}>
-                  <a href={l.href} className="text-sm text-white/40 hover:text-[#a3e635] transition-colors">
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="flex items-center gap-2 mb-4">
+              <span className="font-display text-xl font-bold tracking-tight text-white">LokFeel</span>
+            </div>
+            <p className="text-sm text-white/40 max-w-xs">
+              AI-powered relationship matching engine. Find genuine connections through intelligent compatibility analysis.
+            </p>
           </div>
 
           {/* Legal */}
-          <div>
+          <div className="md:text-right">
             <h3 className="text-sm font-semibold text-white/80 tracking-wider uppercase mb-4">Legal</h3>
             <ul className="space-y-2">
               {legalLinks.map(l => (
@@ -550,40 +516,13 @@ function Footer() {
               ))}
             </ul>
           </div>
-
-          {/* Social Media */}
-          <div>
-            <h3 className="text-sm font-semibold text-white/80 tracking-wider uppercase mb-4">Follow Us</h3>
-            <ul className="space-y-3">
-              <li>
-                <a href="https://www.facebook.com/aluaapp" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#1877F2] transition-colors inline-flex items-center gap-2">
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/aluamessenger" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#E4405F] transition-colors inline-flex items-center gap-2">
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a href="https://x.com/AluaCreators" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors inline-flex items-center gap-2">
-                  X (Twitter)
-                </a>
-              </li>
-              <li>
-                <a href="https://alua.com/terms#dmca" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#a3e635] transition-colors inline-flex items-center gap-2">
-                  DMCA Protection
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
 
-        {/* Divider + Bottom row — 简化为 logo + copyright，不重复 Legal 栏 */}
+        {/* Divider + Bottom row */}
         <div className="border-t border-white/5 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="font-bold text-white/90 text-sm">LokFeel</span>
-            <span className="text-white/30 text-xs">Relationship Matching Engine</span>
+            <span className="text-white/30 text-xs">AI Relationship Matching Engine</span>
           </div>
 
           <p className="text-xs text-white/25">
