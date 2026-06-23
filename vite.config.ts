@@ -20,16 +20,10 @@ export default defineConfig({
         manualChunks: {
           // React 生态单独打包
           'react-vendor': ['react', 'react-dom'],
-          // UI 组件库
+          // UI 组件库（实际安装的唯一重型库）
           'ui-lucide': ['lucide-react'],
-          // 重型库单独打包（按需加载）
-          'framer-motion': ['framer-motion'],
-          'recharts': ['recharts'],
-          // Firebase 单独打包（避免在首屏加载）
-          // 注意：不使用 'firebase' 主入口（它不包含 main 字段），只使用子包
-          'firebase-vendor': ['firebase/app', 'firebase/auth', 'firebase/firestore'],
-          // 工具库
-          'utils': ['date-fns', 'clsx', 'tailwind-merge'],
+          // 工具库（实际安装的）
+          'utils': ['clsx', 'tailwind-merge'],
         },
       },
     },
