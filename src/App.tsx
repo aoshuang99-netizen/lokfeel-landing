@@ -70,12 +70,13 @@ function Navbar() {
           <div className="flex items-center gap-3">
             <a
               href="https://app.lokfeel.com/login"
+              onClick={() => { try { sessionStorage.setItem('lokfeel_from_landing', '1') } catch {} }}
               className="hidden sm:inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors"
             >
               <LogIn className="w-3.5 h-3.5" />
               Sign In
             </a>
-            <a href="https://app.lokfeel.com/register" className="hidden sm:block">
+            <a href="https://app.lokfeel.com/register" onClick={() => { try { sessionStorage.setItem('lokfeel_from_landing', '1') } catch {} }} className="hidden sm:block">
               <button className="btn-lime rounded-full px-5 py-2 text-sm font-semibold cursor-pointer border-none">
                 Get Started
               </button>
@@ -103,12 +104,12 @@ function Navbar() {
               </a>
             ))}
             <div className="h-px bg-white/10 my-2" />
-            <a href="https://app.lokfeel.com/login" onClick={() => setMobileOpen(false)}
+            <a href="https://app.lokfeel.com/login" onClick={() => { try { sessionStorage.setItem('lokfeel_from_landing', '1') } catch {}; setMobileOpen(false) }}
               className="text-lg py-2 text-white/70 hover:text-white transition-colors flex items-center gap-2">
               <LogIn className="w-4 h-4" />
               Sign In
             </a>
-            <a href="https://app.lokfeel.com/register" onClick={() => setMobileOpen(false)}>
+            <a href="https://app.lokfeel.com/register" onClick={() => { try { sessionStorage.setItem('lokfeel_from_landing', '1') } catch {}; setMobileOpen(false) }}>
               <button className="btn-lime w-full rounded-full py-3 text-base font-semibold cursor-pointer border-none">
                 Get Started
               </button>
@@ -129,11 +130,11 @@ function Hero() {
   const [isSlowConnection, setIsSlowConnection] = useState(false)
 
   useEffect(() => {
-    // Detect slow connections (2g/3g/4g) — skip video preload
+    // Detect slow connections (2g/3g only) — skip video preload
     const conn = (navigator as any).connection
     if (conn) {
       const effectiveType = conn.effectiveType
-      setIsSlowConnection(effectiveType === '2g' || effectiveType === '3g' || effectiveType === '4g')
+      setIsSlowConnection(effectiveType === '2g' || effectiveType === '3g' || effectiveType === 'slow-2g')
     }
     const timer = setTimeout(() => setLoaded(true), 100)
     return () => clearTimeout(timer)
@@ -169,6 +170,14 @@ function Hero() {
         )}
       </div>
 
+      {/* Blue & Purple atmosphere orbs */}
+      <div className="blue-glow-orb blue-glow-orb-1" />
+      <div className="blue-glow-orb blue-glow-orb-2" />
+      <div className="blue-glow-orb blue-glow-orb-3" />
+      <div className="purple-glow-orb purple-glow-orb-1" />
+      <div className="purple-glow-orb purple-glow-orb-2" />
+      <div className="absolute inset-0 hero-gradient-overlay" />
+
       {/* Purple ambient glow — bottom left */}
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#4c1d95]/20 rounded-full blur-[120px] pointer-events-none" />
 
@@ -186,7 +195,7 @@ function Hero() {
 
         {/* CTA Buttons — Lime primary */}
         <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-700 delay-200 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <a href="https://app.lokfeel.com/register" className="block w-full sm:w-auto">
+          <a href="https://app.lokfeel.com/register" onClick={() => { try { sessionStorage.setItem('lokfeel_from_landing', '1') } catch {} }} className="block w-full sm:w-auto">
             <button className="btn-lime animate-glow-pulse rounded-full px-8 py-6 text-base font-semibold w-full sm:w-auto flex items-center justify-center gap-2 cursor-pointer border-none" aria-label="Start free registration on LokFeel">
               <Heart className="w-5 h-5" />
               Start Free
@@ -201,7 +210,7 @@ function Hero() {
 
         {/* 🌸 Ladies Never Pay Banner */}
         <div className={`mt-6 sm:mt-8 transition-all duration-700 delay-500 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <a href="https://app.lokfeel.com/register" className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all group">
+          <a href="https://app.lokfeel.com/register" onClick={() => { try { sessionStorage.setItem('lokfeel_from_landing', '1') } catch {} }} className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all group">
             <span className="text-base sm:text-lg">🌸</span>
             <span className="text-white/70 text-xs sm:text-sm font-medium">Ladies Never Pay</span>
             <span className="text-white/30 text-[10px] sm:text-xs hidden sm:inline">— Premium features free for women</span>
@@ -467,7 +476,7 @@ function CTASection() {
         </div>
 
         <div className={`transition-all duration-700 delay-300 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <a href="https://app.lokfeel.com/register">
+          <a href="https://app.lokfeel.com/register" onClick={() => { try { sessionStorage.setItem('lokfeel_from_landing', '1') } catch {} }}>
             <button className="btn-lime animate-glow-pulse rounded-full px-8 py-3 text-base font-semibold cursor-pointer border-none inline-flex items-center gap-2">
               Get Started Free
               <ArrowRight className="w-4 h-4" />

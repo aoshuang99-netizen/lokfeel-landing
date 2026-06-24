@@ -388,9 +388,8 @@ a:focus-visible {
   -webkit-touch-callout: none;
 }
 
-/* Fix viewport height on Huawei browser (address bar issue) */
+/* Fix viewport height on mobile — use min-height to allow scroll */
 html, body, #root {
-  height: 100%;
   min-height: 100vh;
   min-height: -webkit-fill-available;
   overflow-x: hidden;
@@ -454,4 +453,88 @@ body {
   .safe-area-bottom {
     padding-bottom: env(safe-area-inset-bottom);
   }
+}
+
+/* ═══════════════════════════════════════════
+   BLUE GRADIENT BACKGROUND — LokFeel Signature
+   ═══════════════════════════════════════════ */
+
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(10, 10, 10, 0.05) 30%,
+    rgba(10, 10, 10, 0.25) 60%,
+    rgba(10, 10, 10, 0.92) 100%
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Blue glow orbs — ambient atmosphere */
+.blue-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 5;
+  animation: float 8s ease-in-out infinite;
+}
+
+.blue-glow-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+  top: 10%;
+  left: -5%;
+  animation-delay: 0s;
+}
+
+.blue-glow-orb-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+  bottom: 15%;
+  right: -5%;
+  animation-delay: 2s;
+}
+
+.blue-glow-orb-3 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 4s;
+}
+
+/* Purple glow orbs — secondary atmosphere */
+.purple-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 5;
+  animation: float 10s ease-in-out infinite;
+}
+
+.purple-glow-orb-1 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(76, 29, 149, 0.18) 0%, transparent 70%);
+  top: 40%;
+  right: -8%;
+  animation-delay: 1s;
+}
+
+.purple-glow-orb-2 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  bottom: 20%;
+  left: 10%;
+  animation-delay: 3s;
 }
